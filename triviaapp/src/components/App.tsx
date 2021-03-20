@@ -3,18 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../redux/rootStore";
 import Choise from "./Choise";
 import "../App.css";
-import { changeScreen } from "../redux/actions/questionsActions";
-
+import IncorrectAnswer from "./IncorrectAnswer";
+import TimeOver from "./TimeOver";
 
 function App() {
-  const dispatch = useDispatch();
-
-  const sReducer = useSelector(
-    (state: AppState | any) => state.changeScreenReducer
-  );
+  const sReducer = useSelector((state: AppState | any) => state.changeScreenReducer);
 
   return (
-    <div>
+    <div className="App">
       {sReducer.screen === "choiseScreen" ? (
         <div>
           <Choise />
@@ -26,13 +22,14 @@ function App() {
       ) : sReducer.screen === "incorrectAnswer" ? (
         <div>
           <div>
-            <button onClick={() => dispatch(changeScreen("choiseScreen"))}>
-              ana sayfaya git
-            </button>
+            <IncorrectAnswer />
+           
           </div>
         </div>
-      ) : (
-        <div></div>
+      ) : sReducer.screen === "timeOver" && (
+        <div>
+          <TimeOver/>
+        </div>
       )}
     </div>
   );

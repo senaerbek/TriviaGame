@@ -1,3 +1,4 @@
+import { Category } from "../Category";
 import {Question} from "../Question";
 
 export const REQUEST_QUESTION = "REQUEST_QUESTION"
@@ -27,9 +28,10 @@ interface FetchFail extends QuestionState {
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 export const INCREMENT = "INCREMENT"
+export const RESETINCREMENT = "RESETINCREMENT"
 
 export interface IACTION {
-    type : typeof INCREMENT,
+    type : typeof INCREMENT | typeof RESETINCREMENT,
     payload : IPayload
 }
 
@@ -69,16 +71,35 @@ export interface IChangePayload{
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
-export const CHECKANSWER = "CHECKANSWER"
 
-export interface ICHECK {
-    type : typeof CHECKANSWER,
-    payload : IChechAnswer
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+export const SCORE = "SCORE"
+export const RESETSCORE = "RESETSCORE"
+
+export interface ISCORE{
+    type: typeof SCORE | typeof RESETSCORE
+    payload : IScorePayload
 }
 
-export interface IChechAnswer{
-    check : boolean
+export interface IScorePayload{
+    score : number
 }
 
 
-export type ActionTypes  =  FetchRequest | FetchSuccess | FetchFail | IACTION | ISCREEN | ICHANGE | ICHECK
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+
+export const CATEGORIES = "CATEGORIES"
+
+interface CategoryState {
+   categories : Category[];
+}
+
+interface GetCategory extends CategoryState { 
+    type : typeof CATEGORIES; 
+}
+
+
+export type ActionTypes  =   FetchRequest | FetchSuccess | FetchFail | IACTION | ISCREEN | ICHANGE  | ISCORE | GetCategory

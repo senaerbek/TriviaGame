@@ -1,11 +1,14 @@
 import { DIFFICULTYANDCATEGORY, ICHANGE } from "../actions/actionTypes";
 
 export const defaultState = {
-  difficulty: "",
-  category: 0
+  difficulty: "Any Difficulty",
+  category: 0,
 };
 
-export function difficultyandcategoryReducer(state = defaultState, action: ICHANGE) {
+export function difficultyandcategoryReducer(
+  state = defaultState,
+  action: ICHANGE
+) {
   switch (action.type) {
     case DIFFICULTYANDCATEGORY:
       return {
