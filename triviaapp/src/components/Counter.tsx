@@ -12,7 +12,7 @@ const Completionist = () => <span> </span>;
 
 export default function Counter(props: Props) {
   const dispatch = useDispatch();
-  const [reset, setreset] = useState(Date.now() + 50000);
+  const [reset, setreset] = useState(Date.now() + 15000);
 
   const renderer = ({ seconds, completed }: any) => {
     if (completed) {
@@ -24,7 +24,7 @@ export default function Counter(props: Props) {
   };
 
   useEffect(() => {
-    setreset(Date.now() + 50000);
+    setreset(Date.now() + 15000);
   }, [props.index]);
 
   return (

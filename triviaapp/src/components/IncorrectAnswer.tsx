@@ -1,11 +1,19 @@
 import { AppState } from "../redux/rootStore";
 import { useDispatch, useSelector } from "react-redux";
-import { changeScreen, resetincrement, scoreResetAction } from "../redux/actions/questionsActions";
+import {
+  changeScreen,
+  resetincrement,
+  scoreResetAction,
+} from "../redux/actions/questionsActions";
 
 export default function IncorrectAnswer() {
   const dispatch = useDispatch();
-  const scoreReducer = useSelector((state: AppState | any) => state.scoreReducer);
-  const difficultyReducer = useSelector((state: AppState | any) => state.difficultyandcategoryReducer);
+  const scoreReducer = useSelector(
+    (state: AppState | any) => state.scoreReducer
+  );
+  const difficultyReducer = useSelector(
+    (state: AppState | any) => state.difficultyandcategoryReducer
+  );
 
   function onclick() {
     dispatch(changeScreen("choiseScreen"));
@@ -16,25 +24,33 @@ export default function IncorrectAnswer() {
   return (
     <div>
       <div className="container">
-        <div className="row">
-          <div
-            className="col-md-12"
-            style={{ marginTop: "2%", fontSize: "100px" }}
-          >
-               <h1 style={{ fontSize: "100px" }}>Wrong Answer</h1>
+        <div className="col-md-12">
+          <h1 className="display-2" >Wrong Answer</h1>
+        </div>
+        <div className="col-md-12"> 
+        <h1 className="display-3">
             Score - {scoreReducer.score}
-          </div>
-          <div className="col-md-12" style={{ fontSize: "80px" }}>
-            {difficultyReducer.difficulty !== 0 ? (
-              <div>Difficulty - Any Difficulty</div>
-            ) : 
-            (
-                <div>Difficulty - {difficultyReducer.difficulty}</div>
+        </h1>
+      
+        </div>
+        <div className="col-md-12">
+        <h1 className="display-4">
+
+                 {difficultyReducer.difficulty !== 0 ? (
+              <div> Any Difficulty</div>
+            ) : (
+              <div> {difficultyReducer.difficulty}</div>
             )}
-          </div>
+
+          </h1>
+     
+        </div>
+        <div className="col-md-12">
+          <button className="btn btn-danger btn-block" style={{marginTop:"50px", marginBottom:"50px"}} onClick={onclick}>
+            Menu
+          </button>
         </div>
       </div>
-      <button className="btn btn-danger"  style={{width:"700px", height:"70px" , marginTop:"50px"}} onClick={onclick}>Menu</button>
     </div>
   );
 }

@@ -17,26 +17,34 @@ export default function TimeOver() {
     }
   return (
     <div>
-      <div className="container">
-        <div className="row">
-          <div
-            className="col-md-12"
-            style={{ marginTop: "2%", fontSize: "100px" }}
-          >
-              <h1 style={{ fontSize: "100px" }}>Time's up</h1>
-            Score - {scoreReducer.score}
-          </div>
-          <div className="col-md-12" style={{ fontSize: "80px" }}>
-            {difficultyReducer.difficulty !== 0 ? (
-              <div>Difficulty - Any Difficulty</div>
-            ) : 
-            (
-                <div>Difficulty - {difficultyReducer.difficulty}</div>
-            )}
-          </div>
-        </div>
+    <div className="container">
+      <div className="col-md-12">
+        <h1 className="display-2">Time's up</h1>
       </div>
-      <button className="btn btn-danger"  style={{width:"700px", height:"70px" , marginTop:"50px"}} onClick={onclick}>Menu</button>
+      <div className="col-md-12"> 
+      <h1 className="display-3">
+          Score - {scoreReducer.score}
+      </h1>
+    
+      </div>
+      <div className="col-md-12">
+      <h1 className="display-4">
+
+               {difficultyReducer.difficulty !== 0 ? (
+            <div> Any Difficulty</div>
+          ) : (
+            <div> {difficultyReducer.difficulty}</div>
+          )}
+
+        </h1>
+   
+      </div>
+      <div className="col-md-12">
+        <button className="btn btn-danger btn-block" style={{marginTop:"50px", marginBottom:"50px"}} onClick={onclick}>
+          Menu
+        </button>
+      </div>
     </div>
+  </div>
   );
 }

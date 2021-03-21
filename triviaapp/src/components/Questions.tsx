@@ -1,11 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { Question } from "../redux/Question";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  changeScreen,
-  increment,
-  scoreAction,
-} from "../redux/actions/questionsActions";
+import {changeScreen, increment,scoreAction} from "../redux/actions/questionsActions";
 import { AppState } from "../redux/rootStore";
 import Counter from "./Counter";
 
@@ -26,13 +22,13 @@ export default function Questions(props: Props) {
   function checkCorrectAnswer(e: ChangeEvent<HTMLSelectElement> | number | any): any {
     if (e.target.innerHTML === props.questions.correct_answer) {
       setcheck(true);
-      dispatch(scoreAction(5));
+      dispatch(scoreAction(10));
       dispatch(increment(1));
     } else {
       dispatch(changeScreen("incorrectAnswer"));
     }
   }
-
+  
   useEffect(() => {
     setcheck(false);
   }, [props.questionIndex]);
@@ -42,7 +38,6 @@ export default function Questions(props: Props) {
       <div className="row">
         <div className="col-md-4">
           <div>
-        
                 <button
                   disabled= {props.button}
                   style={{
@@ -54,12 +49,9 @@ export default function Questions(props: Props) {
                 >
                   50
                 </button>
-      
-
           </div>
         </div>
         <div className="col-md-4">
-          {" "}
           <div
             style={{
               fontSize: "40px",
